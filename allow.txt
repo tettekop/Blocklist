@@ -1,5 +1,6 @@
 # facebook wasnt working
 @@||facebook.com^$important
+@@||scontent.xx.fbcdn.net^$important
 @@||messenger.com^$important
 @@||scontent.fbru2-1.fna.fbcdn.net^$important
 @@||scontent.fbru5-1.fna.fbcdn.net^$important
