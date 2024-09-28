@@ -1,3 +1,14 @@
-||adnxs-simple.com^
-||bannerflow.net^
-||adrcdn.com^
+||cdn-tracking-script-dev-01--dpg.azureedge.net^$important
+||fbsbx.com^$important
+||fbcdn.net^$important
+||suggestqueries-clients6.youtube.com^$important
+||gstatic.com^$important
+||authorizedvault.com^$important
+||rubionproject.com^$important
+||adsvr.org^$important
+||signaler-pa.clients6.google.com^$important
+||dpgmedia.cloud^$important
+||addrelevance.be^$important
+||pushengage.com^$important
+||temptation.hln.be^$important
+||static.xx.fbcdn.net^$important
