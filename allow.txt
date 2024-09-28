@@ -1,3 +1,9 @@
+#facebook wasn't working
+@@||facebook.com^$important
+@@||messenger.com^$important
+@@||scontent.fbru2-1.fna.fbcdn.net^$important
+@@||scontent.fbru5-1.fna.fbcdn.net^$important
+
 #@@||w3-reporting-nel.reddit.com^$important
 #@@||error-tracking.reddit.com^$important
 #@@||w3-reporting.reddit.com^$important
@@ -11,8 +17,3 @@
 #@@||imasdk.googleapis.com^$client='192.168.129.6'
 #@@||gabe.hit.gemius.pl^$client='192.168.129.6'
 
-#facebook wasn't working
-@@||facebook.com^$important
-@@||messenger.com^$important
-@@||scontent.fbru2-1.fna.fbcdn.net^$important
-@@||scontent.fbru5-1.fna.fbcdn.net^$important
