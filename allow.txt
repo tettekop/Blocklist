@@ -4,10 +4,10 @@
 @@||error-tracking.reddit.com^$important
 @@||w3-reporting.reddit.com^$important
 @@||alb.reddit.com^$important
-#@@||www.gstatic.com^$important
 @@||fonts.gstatic.com^$important
 @@||facebook.com^$important
 @@||messenger.com^$important
+#Make VRTMax working
 @@||app-measurement.com^$client='192.168.129.6'
 @@||sdk.privacy-center.org^$client='192.168.129.6'
 @@||androidtvchannels-pa.googleapis.com^$client='192.168.129.6'
