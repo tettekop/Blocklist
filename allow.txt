@@ -4,7 +4,7 @@
 @@||error-tracking.reddit.com^$important
 @@||w3-reporting.reddit.com^$important
 @@||alb.reddit.com^$important
-@@||www.gstatic.com^$important
+#@@||www.gstatic.com^$important
 @@||fonts.gstatic.com^$important
 @@||facebook.com^$important
 @@||messenger.com^$important
