@@ -1,7 +1,8 @@
 blueprint:
-  name: Sonoff M5 2-Gang Button Trigger (eWeLink)
+  name: Sonoff M5 2-Gang Button Trigger (eWeLink) with Optional Action Delay
   description: >
-    Trigger actions when either button on a Sonoff M5 2-gang switch is pressed (turned on). Works with eWeLink cloud integration.
+    Trigger actions when either button on a Sonoff M5 2-gang switch is pressed (turned on).
+    Works with eWeLink cloud integration. Now includes an optional delay before running the action!
   domain: automation
   input:
     button_1:
@@ -29,6 +30,16 @@ blueprint:
       default: true
       selector:
         boolean: {}
+    action_delay:
+      name: Optional delay before action (seconds)
+      description: How many seconds to wait after press before running the action? (1 to 300 seconds; set to 0 for no delay)
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 300
+          step: 1
+          unit_of_measurement: seconds
 
 mode: single
 
@@ -52,6 +63,10 @@ action:
               - service: switch.turn_off
                 target:
                   entity_id: !input button_1
+          - if: "{{ input('action_delay')|int > 0 }}"
+            then:
+              - delay:
+                  seconds: "{{ input('action_delay')|int }}"
           - choose: []
             default: !input button_1_action
 
@@ -63,5 +78,9 @@ action:
               - service: switch.turn_off
                 target:
                   entity_id: !input button_2
+          - if: "{{ input('action_delay')|int > 0 }}"
+            then:
+              - delay:
+                  seconds: "{{ input('action_delay')|int }}"
           - choose: []
             default: !input button_2_action
