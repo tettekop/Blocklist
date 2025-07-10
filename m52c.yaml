@@ -1,8 +1,8 @@
 blueprint:
-  name: Sonoff M5 2-Gang Button Trigger (eWeLink) with Optional Action Delay
+  name: Sonoff M5 2-Gang Button Trigger (eWeLink) with Per-Button Action Delay
   description: >
     Trigger actions when either button on a Sonoff M5 2-gang switch is pressed (turned on).
-    Works with eWeLink cloud integration. Now includes an optional delay before running the action!
+    Works with eWeLink cloud integration. Includes individually configurable delays before running each action!
   domain: automation
   input:
     button_1:
@@ -30,9 +30,19 @@ blueprint:
       default: true
       selector:
         boolean: {}
-    action_delay:
-      name: Optional delay before action (seconds)
-      description: How many seconds to wait after press before running the action? (1 to 300 seconds; set to 0 for no delay)
+    button_1_delay:
+      name: Optional delay before Button 1 action (seconds)
+      description: How many seconds to wait after Button 1 press before running the action? (1 to 300 seconds; set to 0 for no delay)
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 300
+          step: 1
+          unit_of_measurement: seconds
+    button_2_delay:
+      name: Optional delay before Button 2 action (seconds)
+      description: How many seconds to wait after Button 2 press before running the action? (1 to 300 seconds; set to 0 for no delay)
       default: 0
       selector:
         number:
@@ -63,10 +73,10 @@ action:
               - service: switch.turn_off
                 target:
                   entity_id: !input button_1
-          - if: "{{ input('action_delay')|int > 0 }}"
+          - if: "{{ input('button_1_delay')|int > 0 }}"
             then:
               - delay:
-                  seconds: "{{ input('action_delay')|int }}"
+                  seconds: "{{ input('button_1_delay')|int }}"
           - choose: []
             default: !input button_1_action
 
@@ -78,9 +88,9 @@ action:
               - service: switch.turn_off
                 target:
                   entity_id: !input button_2
-          - if: "{{ input('action_delay')|int > 0 }}"
+          - if: "{{ input('button_2_delay')|int > 0 }}"
             then:
               - delay:
-                  seconds: "{{ input('action_delay')|int }}"
+                  seconds: "{{ input('button_2_delay')|int }}"
           - choose: []
             default: !input button_2_action
