@@ -1,0 +1,67 @@
+blueprint:
+  name: Sonoff M5 2-Gang Button Trigger (eWeLink)
+  description: >
+    Trigger actions when either button on a Sonoff M5 2-gang switch is pressed (turned on). Works with eWeLink cloud integration.
+  domain: automation
+  input:
+    button_1:
+      name: Button 1 (Switch Entity)
+      selector:
+        entity:
+          domain: switch
+    button_2:
+      name: Button 2 (Switch Entity)
+      selector:
+        entity:
+          domain: switch
+    button_1_action:
+      name: Action for Button 1 Press
+      default: []
+      selector:
+        action: {}
+    button_2_action:
+      name: Action for Button 2 Press
+      default: []
+      selector:
+        action: {}
+    emulate_press:
+      name: Emulate momentary press (auto turn off after 1s)?
+      default: true
+      selector:
+        boolean: {}
+
+mode: single
+
+trigger:
+  - platform: state
+    entity_id: !input button_1
+    to: "on"
+    id: button_1
+  - platform: state
+    entity_id: !input button_2
+    to: "on"
+    id: button_2
+
+action:
+  - choose:
+      - conditions: "{{ trigger.id == 'button_1' }}"
+        sequence:
+          - if: "{{ input('emulate_press') }}"
+            then:
+              - delay: "00:00:01"
+              - service: switch.turn_off
+                target:
+                  entity_id: !input button_1
+          - choose: []
+            default: !input button_1_action
+
+      - conditions: "{{ trigger.id == 'button_2' }}"
+        sequence:
+          - if: "{{ input('emulate_press') }}"
+            then:
+              - delay: "00:00:01"
+              - service: switch.turn_off
+                target:
+                  entity_id: !input button_2
+          - choose: []
+            default: !input button_2_action
